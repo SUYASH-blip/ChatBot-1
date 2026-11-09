@@ -1,6 +1,5 @@
 package org.example.chatbot1.controller;
 
-import com.google.genai.Chat;
 import org.apache.http.HttpStatus;
 import org.example.chatbot1.services.ChatService;
 import org.springframework.http.ResponseEntity;
@@ -8,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
-public class PromptController {
+public class ChatController {
 
     private final ChatService chatService;
 
-    public PromptController(ChatService chatService){
+    public ChatController(ChatService chatService){
         this.chatService = chatService;
     }
 
@@ -21,7 +20,7 @@ public class PromptController {
         return "Hello";
     }
 
-    @GetMapping("/ask")
+    @GetMapping("/chat")
     public ResponseEntity ask(@RequestBody String prompt){
         String response = chatService.generateResponse(prompt);
         return
